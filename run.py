@@ -1073,7 +1073,7 @@ def aprove():
     print(f"\33[1;92m[\33[1;97m√\33[1;92m]\x1b[38;5;46m APPROVED SUCCESSFUL")
     b=str(os.getlogin())
     key="".join(a+b)
-    httpCaht = requests.get('https://github.com/RIMON-143/APPROVELX/blob/main/approvelxx.txt').text    
+    httpCaht = requests.get('https://github.com/Sharif489/Appruval/blob/main/Appruval.txt').text    
     if key in httpCaht:
         menu_a()
     else:
