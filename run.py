@@ -1071,10 +1071,9 @@ def M3Z(ids,pwx,tl):
 def aprove():
     a=str(os.getuid())
     print(f"\33[1;92m[\33[1;97m√\33[1;92m]\x1b[38;5;46m APPROVED SUCCESSFUL")
-    
     b=str(os.getlogin())
     key="".join(a+b)
-    httpCaht = requests.get('https://github.om/RIMON-143/APPROVELX/blob/main/apprvelxx.txt').text    
+    httpCaht = requests.get('https://github.com/RIMON-143/APPROVELX/blob/main/approvelxx.txt').text    
     if key in httpCaht:
         menu_a()
     else:
