@@ -327,7 +327,7 @@ logo = (f"""
 \x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;47mFACEBOOK  \x1b[1;97m ● \x1b[1;92mRAHAT RAZ  
 \x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;48mGITHUB    \x1b[1;97m ● \x1b[1;92mRAHAT-RAZ
 \x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;47mTOOLS     \x1b[1;97m ● \x1b[1;92mPAID
-\x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;47mVERSION   \x1b[1;97m ● \x1b[1;92m4.5                   
+\x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;47mVERSION   \x1b[1;97m ● \x1b[1;92m0.2                   
 {GGG}\x1b[1;97m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━{G}""")
 def linex():
         print(f'{GGG}\x1b[1;97m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━{G}')
