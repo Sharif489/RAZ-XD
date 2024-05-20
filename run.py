@@ -1068,7 +1068,7 @@ def M3Z(ids,pwx,tl):
     except:
         pass        
         pass
-():
+def aprove():
     a=str(os.getuid())
     print(f"\33[1;92m[\33[1;97m√\33[1;92m]\x1b[38;5;46m APPROVED SUCCESSFUL")
     b=str(os.getlogin())
